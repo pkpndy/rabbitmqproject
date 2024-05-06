@@ -17,7 +17,6 @@ const receiveMsg = async () => {
     const q = await channel.assertQueue('', {exclusive: true});
     console.log("Waiting for msgs in queue:", q.queue);
     //bind queue to the exchange(queueNme, exchangeName, routeKey)
-    //routeKey doesn't matter here as the exchange type is fanout
     args.forEach(function(severity) {
         channel.bindQueue(q.queue, exchangeName, severity);
     });
